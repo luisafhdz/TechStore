@@ -1,0 +1,204 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f4f6f9;
+    margin:0;
+}
+
+header{
+    background:#2c3e50;
+    color:white;
+    padding:20px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+main{
+    width:90%;
+    margin:30px auto;
+}
+
+/* Mensajes */
+
+.success-message{
+    background:#d4edda;
+    color:#155724;
+    padding:12px;
+    border-radius:5px;
+    margin-bottom:20px;
+}
+
+.error-message{
+    background:#f8d7da;
+    color:#721c24;
+    padding:15px;
+    border-radius:5px;
+    margin-bottom:20px;
+}
+
+.error-message ul{
+    margin:10px 0 0;
+}
+
+/* Tabla */
+
+.orders-table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+.orders-table th{
+    background:#34495e;
+    color:white;
+}
+
+.orders-table th,
+.orders-table td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+.orders-table tr:nth-child(even){
+    background:#f8f8f8;
+}
+
+.orders-table img{
+    border-radius:8px;
+}
+
+/* Botones */
+
+.btn,
+.btn-view,
+.btn-edit,
+.btn-delete{
+    display:inline-block;
+    padding:8px 14px;
+    border:none;
+    border-radius:5px;
+    color:white;
+    text-decoration:none;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.btn{
+    background:#27ae60;
+}
+
+.btn:hover{
+    background:#229954;
+}
+
+.btn-view{
+    background:#3498db;
+}
+
+.btn-view:hover{
+    background:#2980b9;
+}
+
+.btn-edit{
+    background:#f39c12;
+}
+
+.btn-edit:hover{
+    background:#d68910;
+}
+
+.btn-delete{
+    background:#e74c3c;
+    appearance:none;
+    -webkit-appearance:none;
+    border:none;
+    outline:none;
+    box-shadow:none;
+}
+
+.btn-delete:hover{
+    background:#c0392b;
+}
+
+.btn-delete:focus{
+    outline:none;
+}
+
+.actions{
+    white-space:nowrap;
+}
+
+.delete-form{
+    display:inline;
+    margin:0;
+    padding:0;
+    background:none;
+    box-shadow:none;
+}
+
+/* Formularios */
+
+.form-container{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:8px;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    margin-bottom:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    box-sizing:border-box;
+}
+
+textarea{
+    resize:vertical;
+    min-height:100px;
+}
+
+.preview-image{
+    display:block;
+    margin:15px 0;
+    border-radius:8px;
+}
+
+.help-text{
+    color:#777;
+    font-size:14px;
+}
+
+/* Tarjeta de detalles */
+
+.details-card{
+    max-width:700px;
+    margin:20px auto;
+    padding:25px;
+    background:white;
+    border-radius:8px;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+.details-card p{
+    margin:12px 0;
+    line-height:1.6;
+}
+
+.details-card strong{
+    color:#2c3e50;
+}
