@@ -56,8 +56,7 @@
 
     <p class="cart-actions">
         <a href="{{ route('catalog.index') }}" class="btn-view">Seguir comprando</a>
-        {{-- Fase 3: aquí se conectará el checkout y la generación del pedido --}}
-        <button type="button" class="btn" disabled title="Disponible en la Fase 3">Realizar pedido</button>
+        <a href="{{ route('orders.checkout') }}" class="btn">Realizar pedido</a>
     </p>
 
 @else

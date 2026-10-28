@@ -3,9 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title') | TechStore</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/store.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fase3.css') }}">
 </head>
 <body>
 
@@ -28,7 +30,10 @@
                     @if(auth()->user()->isAdmin())
                         <a href="{{ route('admin.products.index') }}">Productos</a>
                         <a href="{{ route('admin.categories.index') }}">Categorías</a>
-                        <a href="{{ route('orders.home') }}">Pedidos</a>
+                        <a href="{{ route('admin.orders.index') }}">Pedidos</a>
+                        <a href="{{ route('admin.customers.index') }}">Clientes</a>
+                    @else
+                        <a href="{{ route('orders.index') }}">Mis pedidos</a>
                     @endif
 
                     <span class="nav-user">{{ auth()->user()->name }}</span>
@@ -60,6 +65,8 @@
     <footer>
         <p>TechStore &copy; {{ date('Y') }} — Proyecto Integrador</p>
     </footer>
+
+    @include('partials.assistant')
 
 </body>
 </html>
