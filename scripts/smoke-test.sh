@@ -65,7 +65,6 @@ if [ -n "$TOKEN" ]; then
     else
         fail "Login de admin falló ($LOGIN)"
     fi
-    status_is "Panel de productos con sesión" "$WEB/admin/products" 200 >/dev/null 2>&1
     CODE=$(curl -s -o /dev/null -w '%{http_code}' -b "$JAR" "$WEB/admin/products")
     if [ "$CODE" = "200" ]; then ok "Panel de productos accesible con sesión (HTTP 200)"; else fail "Panel de productos (esperado 200, recibido $CODE)"; fi
 fi
