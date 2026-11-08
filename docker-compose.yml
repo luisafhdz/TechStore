@@ -1,0 +1,78 @@
+# TechStore: tienda web (Laravel) + microservicio de IA (FastAPI) + base de datos (MySQL)
+# Uso:  docker compose up -d --build
+name: techstore
+
+services:
+
+  db:
+    image: mysql:8.0
+    container_name: techstore-db
+    restart: unless-stopped
+    env_file: .env.docker
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u root --password=$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    networks:
+      - techstore
+
+  ia:
+    build: ./ia-service
+    container_name: techstore-ia
+    restart: unless-stopped
+    ports:
+      - "8002:8001"          # http://localhost:8002/docs
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8001/health', timeout=3)"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks:
+      - techstore
+
+  web:
+    build: .
+    container_name: techstore-web
+    restart: unless-stopped
+    env_file: .env.docker
+    depends_on:
+      db:
+        condition: service_healthy
+      ia:
+        condition: service_healthy
+    ports:
+      - "8080:80"            # http://localhost:8080
+    volumes:
+      - app_storage:/var/www/html/storage
+    healthcheck:
+      test: ["CMD", "php", "-r", "exit(@file_get_contents('http://127.0.0.1/up') === false ? 1 : 0);"]
+      interval: 5s
+      timeout: 5s
+      retries: 40
+      start_period: 20s
+    networks:
+      - techstore
+
+  phpmyadmin:
+    image: phpmyadmin:5
+    container_name: techstore-phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: db
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8081:80"            # http://localhost:8081
+    networks:
+      - techstore
+
+volumes:
+  db_data:
+  app_storage:
+
+networks:
+  techstore:

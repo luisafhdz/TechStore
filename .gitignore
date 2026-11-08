@@ -22,3 +22,7 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+.env.docker
+ia-service/venv/
+__pycache__/
+microservices/**/node_modules/
